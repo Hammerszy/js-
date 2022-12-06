@@ -1,0 +1,36 @@
+var mas=[10, 5, 8, 9, 1, 3, 2]; метод бульбашки 
+
+for(var i=0, tmp;i<mas.length-1;i++){
+for(var j=0;j<mas.length-1;j++){
+	if(mas[j]>mas[j+1]){
+		tmp=mas[j];
+		mas[j]=mas[j+1];
+		mas[j+1]=tmp;
+	}
+}
+}
+
+alert( mas );
+
+
+
+if(L==undefined)L=0;
+	if(R==undefined)R=mas.length-1;
+	var iter = L, jter = R, middle = parseInt((R+L)/2), x = mas[middle], tmp;
+
+	do{
+		while(mas[iter]<x){iter++;}
+		while(x<mas[jter]){jter--;}
+		if(iter<=jter){
+			tmp = mas[iter];
+			mas[iter] = mas[jter];
+			mas[jter] = tmp;
+			iter++;
+			jter--;
+		}
+	}while(iter<jter);
+
+if(L<jter) QuickSort(mas, L, jter); 
+if(iter<R) QuickSort(mas, iter, R);
+return mas;
+}
