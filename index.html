@@ -1,36 +1,130 @@
-var mas=[10, 5, 8, 9, 1, 3, 2]; метод бульбашки 
-
-for(var i=0, tmp;i<mas.length-1;i++){
-for(var j=0;j<mas.length-1;j++){
-	if(mas[j]>mas[j+1]){
-		tmp=mas[j];
-		mas[j]=mas[j+1];
-		mas[j+1]=tmp;
-	}
+//просто 3 клас
+/*
+class Iphone{
+    constructor(){
+        this.model = 'Xr';
+        this.year = 2019;
+        this.color = 'red';
+        this.ram = 128;
+        this.brand = 'Aplle';
+    }
 }
+class Samsung{
+    constructor(){
+        this.model = 'a51';
+        this.year = 2017;
+        this.color = 'blue';
+        this.ram = 64;
+        this.brand = 'Samsung';
+    }
 }
-
-alert( mas );
-
-
-
-if(L==undefined)L=0;
-	if(R==undefined)R=mas.length-1;
-	var iter = L, jter = R, middle = parseInt((R+L)/2), x = mas[middle], tmp;
-
-	do{
-		while(mas[iter]<x){iter++;}
-		while(x<mas[jter]){jter--;}
-		if(iter<=jter){
-			tmp = mas[iter];
-			mas[iter] = mas[jter];
-			mas[jter] = tmp;
-			iter++;
-			jter--;
-		}
-	}while(iter<jter);
-
-if(L<jter) QuickSort(mas, L, jter); 
-if(iter<R) QuickSort(mas, iter, R);
-return mas;
+class Xiaomi{
+    constructor(){
+        this.model = 'redmi a228';
+        this.year = 2024;
+        this.color = 'black';
+        this.ram = 1000;
+        this.brand = 'Xiaomi';
+    }
 }
+let iphone = new Iphone(),
+    samsung = new Samsung(),
+    xiaomi = new Xiaomi();
+console.log(iphone)
+console.log(samsung)
+console.log(xiaomi)
+*/
+// класи з конструктором
+/*
+class Iphone{
+    constructor(model, year, color, ram){
+        this.model = model;
+        this.year = year;
+        this.color = color;
+        this.ram = ram;
+        this.brand = 'Iphone';
+    }
+}
+class Samsung{
+    constructor(model, year, color, ram){
+        this.model = model;
+        this.year = year;
+        this.color = color;
+        this.ram = ram;
+        this.brand = 'Samsung';
+    }
+}
+class Xiaomi{
+    constructor(model, year, color, ram){
+        this.model = model;
+        this.year = year;
+        this.color = color;
+        this.ram = ram;
+        this.brand = 'Xiaomi';
+    }
+}
+let iphone = new Iphone('11pro', 2019, 'grey', 256),
+    samsung = new Samsung('s9', 2015, 'black', 64),
+    xiaomi = new Xiaomi('note redmi pro 228 smart+', 2025, 'black-blue-white', 512);
+console.log(iphone);
+console.log(samsung);
+console.log(xiaomi);
+*/
+//батьківський класс
+/*
+class Phone{
+    constructor(model,year,color,ram){
+        this.model = model;
+        this.year = year;
+        this.color = color;
+        this.ram = ram;
+    }
+}
+class Iphone extends Phone{
+    constructor(model,year,color,ram){
+        super(model,year,color,ram);
+        this.brand = 'Iphone';
+    }
+}
+class Samsung extends Phone{
+    constructor(model,year,color,ram){
+        super(model,year,color,ram);
+        this.brand = 'Samsung';
+    }
+}
+class Xiaomi extends Phone{
+    constructor(model,year,color,ram){
+        super(model,year,color,ram);
+        this.brand = 'Xiaomi';
+    }
+}
+let iphone = new Iphone('12mini',2020,'White', 64),
+    samsung = new Samsung('s21plus',2021,'Black', 128),
+    xiaomi = new Xiaomi('redmi 899889',2019,'Green', 256);
+console.log(iphone);
+console.log(samsung);
+console.log(xiaomi);
+*/
+//з методом обчисленя ціни/віку
+/*
+class Phone{
+    constructor(model,year,color,mem){
+        this.model = model;
+        this.year = year;
+        this.color = color;
+        this.mem = mem;
+    }
+    calculatePrice =()=>{
+        let koef = 1.27 
+        return Math. round(((this.year * koef)/ this.mem) * 10);
+    }
+    calculateYear=()=>{
+        let nowYear = 2022;
+        return(nowYear - this.year)
+    }
+}
+class Iphone extends Phone{
+    constructor(model,year,color,mem){
+        super(model,year,color,mem);
+        this.brand = 'Iphone';
+    }
